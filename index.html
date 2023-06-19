@@ -3,44 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dz14.3</title>
+    <title>Dz13</title>
     <script>
-      function doMath(x, znak, y) {
-        let result;
+      function fillArray() {
+        const rows = parseInt(prompt("Введіть кількість рядків:"));
+        const columns = parseInt(prompt("Введіть кількість стовпців:"));
 
-        switch (znak) {
-          case "+":
-            result = x + y;
-            break;
-          case "-":
-            result = x - y;
-            break;
-          case "*":
-            result = x * y;
-            break;
-          case "/":
-            result = x / y;
-            break;
-          case "%":
-            result = x % y;
-            break;
-          case "^":
-            result = Math.pow(x, y);
-            break;
-          default:
-            result = NaN;
+        const array = [];
+
+        for (let i = 0; i < rows; i++) {
+          const row = [];
+
+          for (let j = 0; j < columns; j++) {
+            const value = prompt(`Введіть значення для елемента [${i}][${j}]:`);
+            row.push(value);
+          }
+
+          array.push(row);
         }
 
-        return result;
+        return array;
       }
 
       function performOperations() {
-        const x = parseFloat(prompt("Введіть перше число:"));
-        const y = parseFloat(prompt("Введіть друге число:"));
-        const operation = prompt("Введіть операцію (+, -, *, /, %, ^):");
-
-        const mathResult = doMath(x, operation, y);
-        document.getElementById("result").textContent = mathResult;
+        const userArray = fillArray();
+        console.log(userArray);
+        document.getElementById("result").textContent =
+          JSON.stringify(userArray);
       }
     </script>
   </head>
